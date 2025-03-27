@@ -8,21 +8,35 @@ export const ProductApp = () => {
     const [products, setProducts] = useState([]);
 
     const [productSelected, setProductSelected] = useState({
+        id: 0,
         name: "",
         price: ""
     })
 
     useEffect(() => {
-    const fetchProducts = async () => {
-        const result = await listProducts();
-        setProducts(result);
-    };
+        const fetchProducts = async () => {
+            const result = await listProducts();
+            setProducts(result);
+        };
     fetchProducts();
 }, []);
 
     const handlerAddProduct = ( product ) => {
         console.log( product );
-        setProducts([...products, { ...product }]);
+
+        if ( product.id > 0 ) {
+            setProducts( products.map( prod => {
+                if ( prod.id == product.id ) {
+                    return { ...product };
+                }
+                return prod;
+            }));
+        } else{
+            setProducts([...products, { ...product, id: new Date().getTime() }]);
+        }
+
+
+            
     }
 
     const handlerRemoveProduct = ( id ) => {
@@ -35,14 +49,16 @@ export const ProductApp = () => {
 
 
   return (
-    <div>
-        <h1>Products</h1>
-        <div>
-            <div>
+    <div className='container my-4' >
+        <h2>Products</h2>
+        <div className='row' >
+            <div className='col' >
                 <ProductForm selectedProduct={ productSelected } addProduct={handlerAddProduct} />
             </div>
-            <div>
-                <ProductTable products={products} removeProduct={ handlerRemoveProduct } selectedProduct={ handlerSelectedProduct } />
+            <div className='col' >
+                {
+                    products.length === 0 ? <h3 className=' alert alert-warning'>No products available</h3> : <ProductTable products={products} removeProduct={ handlerRemoveProduct } selectedProduct={ handlerSelectedProduct } />
+                }
             </div>
         </div>
         

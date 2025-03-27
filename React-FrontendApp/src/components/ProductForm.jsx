@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 export const ProductForm = ( { addProduct, selectedProduct } ) => {
 
     const initialForm = {
+        id: 0,
         name: "",
         price: ""
     };
@@ -15,7 +16,7 @@ export const ProductForm = ( { addProduct, selectedProduct } ) => {
     
 
     // Destructuring form values
-    const {  name, price } = form;
+    const { id, name, price } = form;
 
     // Event handler for catch up form events
     const handleChange = ( event ) => {
@@ -24,7 +25,7 @@ export const ProductForm = ( { addProduct, selectedProduct } ) => {
     }
 
     // Event handler for submit form
-    const onSubmit = () => {
+    const onSubmit = ( id ) => {
         if ( !name || !price ) {
             alert("Please complete the form");
             return;
@@ -32,7 +33,12 @@ export const ProductForm = ( { addProduct, selectedProduct } ) => {
 
         // Add new product to the products array
         addProduct(form);
-        alert(`Product ${name} added`);
+
+        if(id > 0){
+            alert(`Product ${name} edited successfully`);
+        }else{
+            alert(`Product ${name} added successfully`);
+        }
         
         // Reset form
         setForm(initialForm);
@@ -40,15 +46,15 @@ export const ProductForm = ( { addProduct, selectedProduct } ) => {
     };
 
   return (
-    <form onSubmit={ (event) => {
+    <form onSubmit={ ( event ) => {
         event.preventDefault();
-        onSubmit( event );
+        onSubmit( form.id );
     }}>
         <div>
             <input type="text" 
                 name='name'
                 placeholder="Product Name"
-                style={{ marginBottom: "4px"}} 
+                className='form-control my-3 w-75'
                 value={ name }
                 onChange={ handleChange }
             />
@@ -57,16 +63,15 @@ export const ProductForm = ( { addProduct, selectedProduct } ) => {
             <input type="number" 
                 name='price'
                 placeholder="Price" 
-                style={{ marginBottom: "4px"}}
+                className='form-control my-3 w-75'
                 value={ price }
                 onChange={ handleChange }
             />
         </div>
         <div>
-            <button type="submit">Add Product</button>
-        </div>
-        <div>
-            <button type="submit">Update Product</button>
+            <button type="submit" className='btn btn-primary'>
+                { id > 0 ? "Update" : "Add" }
+            </button>
         </div>
   
     </form>

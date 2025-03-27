@@ -4,7 +4,7 @@ import { ProductDetail } from './ProductDetail'
 
 export const ProductTable = ( { products = [], removeProduct, selectedProduct } ) => {
   return (
-    <table>
+    <table className='table table-striped table-hover'>
             <thead>
                 <tr>
                     <th>Name</th>
