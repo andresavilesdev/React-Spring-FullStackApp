@@ -1,9 +1,11 @@
 package com.fs.backend_products.products.repository;
 
 import com.fs.backend_products.products.entities.Product;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
-@Repository
-public interface ProductRepository extends JpaRepository<Product, Long> {
+@CrossOrigin(origins = "http://localhost:5173")
+@RepositoryRestResource(path = "products")
+public interface ProductRepository extends CrudRepository<Product, Long> {
 }
