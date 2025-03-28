@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { listProducts }  from "../services/ProductService";
+import { findAll, }  from "../services/ProductService";
 import { ProductTable } from './ProductTable';
 import { ProductForm } from './ProductForm';
 
@@ -13,13 +13,14 @@ export const ProductApp = () => {
         price: ""
     })
 
+    const getProducts = async () => {
+        const result = await findAll();
+        setProducts(result.data._embedded.products);
+    };
+
     useEffect(() => {
-        const fetchProducts = async () => {
-            const result = await listProducts();
-            setProducts(result);
-        };
-    fetchProducts();
-}, []);
+        getProducts();
+    }, []);
 
     const handlerAddProduct = ( product ) => {
         console.log( product );
