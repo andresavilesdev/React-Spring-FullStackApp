@@ -12,7 +12,7 @@ Product Manager es una aplicación Full Stack CRUD donde se pueden crear, actual
 
 ### 1. Clonar el repositorio
 ```bash
-git clone (https://github.com/andresavilesdev/React-Spring-FullStackApp)
+git clone https://github.com/andresavilesdev/React-Spring-FullStackApp
 cd React-Spring-FullStackApp
 ```
 
