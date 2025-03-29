@@ -12,15 +12,15 @@ Product Manager es una aplicación Full Stack CRUD donde se pueden crear, actual
 
 ### 1. Clonar el repositorio
 ```bash
-git clone <URL_DEL_REPOSITORIO>
-cd product-manager
+git clone (https://github.com/andresavilesdev/React-Spring-FullStackApp)
+cd React-Spring-FullStackApp
 ```
 
 ### 2. Configuración del Backend (Spring Boot)
 1. Asegúrate de tener MySQL instalado y en ejecución.
 2. Configura el archivo `application.properties` en `src/main/resources/` con tu usuario y contraseña de MySQL:
    ```properties
-   spring.datasource.url=jdbc:mysql://localhost:3306/nombre_basedatos
+   spring.datasource.url=jdbc:mysql://localhost:3306/nombre_basedatos?createDatabaseIfNotExist=true
    spring.datasource.username=TU_USUARIO
    spring.datasource.password=TU_CONTRASEÑA
    spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
@@ -52,13 +52,13 @@ cd product-manager
 
 ```
 product-manager/
-│── backend/ (Spring Boot)
-│── frontend/ (React)
+│── backend-products/ (Spring Boot)
+│── frontend-products/ (React)
 │   ├── src/
 │   │   ├── components/  # Componentes reutilizables
+|   |      ├── ProductsApp.jsx  # Renderizado de la aplicación
 │   │   ├── services/    # Archivo para manejar peticiones API
-│   │   ├── App.js       # Punto de entrada principal
-│   │   ├── index.js     # Renderizado de la aplicación
+│   │   ├── Main.jsx       # Punto de entrada principal   
 │   ├── public/
 │   ├── package.json
 ```
@@ -67,10 +67,4 @@ product-manager/
 - Dockerizar la base de datos para facilitar la configuración.
 - Mejorar la interfaz con alguna librería de estilos como Material UI o Tailwind.
 - Implementar validaciones en los formularios.
-
-## Contribuciones
-Si deseas contribuir, por favor, abre un issue o envía un pull request con tus mejoras.
-
-## Licencia
-Este proyecto está bajo la licencia MIT.
 
