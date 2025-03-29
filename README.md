@@ -1,70 +1,69 @@
 # Product Manager
 
-## Descripción
-Product Manager es una aplicación Full Stack CRUD donde se pueden crear, actualizar, eliminar y ver productos a través de una tabla. El diseño de la interfaz está hecho con CSS puro.
+## Description
+Product Manager is a Full Stack CRUD application where users can create, update, delete, and view products through a table. The interface design is made with pure CSS.
 
-## Tecnologías utilizadas
-- **Frontend:** React con Vite, CSS puro
+## Technologies Used
+- **Frontend:** React with Vite, pure CSS
 - **Backend:** Spring Boot
-- **Base de datos:** MySQL (local, con posibilidad de dockerización en el futuro)
+- **Database:** MySQL (local, with a future possibility of containerization)
 
-## Instalación y ejecución
+## Installation and Execution
 
-### 1. Clonar el repositorio
+### 1. Clone the Repository
 ```bash
 git clone https://github.com/andresavilesdev/React-Spring-FullStackApp
 cd React-Spring-FullStackApp
 ```
 
-### 2. Configuración del Backend (Spring Boot)
-1. Asegúrate de tener MySQL instalado y en ejecución.
-2. Configura el archivo `application.properties` en `src/main/resources/` con tu usuario y contraseña de MySQL:
+### 2. Backend Configuration (Spring Boot)
+1. Make sure MySQL is installed and running.
+2. Configure the `application.properties` file in `src/main/resources/` with your MySQL username and password:
    ```properties
-   spring.datasource.url=jdbc:mysql://localhost:3306/nombre_basedatos?createDatabaseIfNotExist=true
-   spring.datasource.username=TU_USUARIO
-   spring.datasource.password=TU_CONTRASEÑA
+   spring.datasource.url=jdbc:mysql://localhost:3306/database_name?createDatabaseIfNotExist=true
+   spring.datasource.username=YOUR_USERNAME
+   spring.datasource.password=YOUR_PASSWORD
    spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
    ```
-3. Ejecuta la aplicación de Spring Boot:
+3. Run the Spring Boot application:
    ```bash
    mvn spring-boot:run
    ```
 
-### 3. Configuración del Frontend (React)
-1. Instala las dependencias:
+### 3. Frontend Configuration (React)
+1. Install dependencies:
    ```bash
    cd frontend
    npm install
    ```
-2. Ejecuta el proyecto en modo desarrollo:
+2. Run the project in development mode:
    ```bash
    npm run dev
    ```
 
 ## API Endpoints
 
-- **Obtener productos:** `GET /products`
-- **Crear producto:** `POST /products`
-- **Actualizar producto:** `PUT /products/{id}`
-- **Eliminar producto:** `DELETE /products/{id}`
+- **Get products:** `GET /products`
+- **Create product:** `POST /products`
+- **Update product:** `PUT /products/{id}`
+- **Delete product:** `DELETE /products/{id}`
 
-## Estructura del Proyecto
+## Project Structure
 
 ```
 product-manager/
 │── backend-products/ (Spring Boot)
 │── frontend-products/ (React)
 │   ├── src/
-│   │   ├── components/  # Componentes reutilizables
-|   |      ├── ProductsApp.jsx  # Renderizado de la aplicación
-│   │   ├── services/    # Archivo para manejar peticiones API
-│   │   ├── Main.jsx       # Punto de entrada principal   
+│   │   ├── components/  # Reusable components
+|   |      ├── ProductsApp.jsx  # Application rendering
+│   │   ├── services/    # File for handling API requests
+│   │   ├── Main.jsx       # Main entry point   
 │   ├── public/
 │   ├── package.json
 ```
 
-## Próximas mejoras
-- Dockerizar la base de datos para facilitar la configuración.
-- Mejorar la interfaz con alguna librería de estilos como Material UI o Tailwind.
-- Implementar validaciones en los formularios.
-
+## Future Improvements
+- Containerize the database for easier configuration.
+- Enhance the interface using a styling library like Material UI or Tailwind.
+- Implement form validations.
